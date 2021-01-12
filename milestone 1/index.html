@@ -24,7 +24,7 @@
 
       <!-- navbar right -->
       <div class="navbar_right">
-        <input type="text" placeholder="Inserisci il titolo del film">
+        <input type="text" placeholder="Inserisci il titolo del film"  v-on:keyup.enter="searchMovies" v-model="movieInput">
       </div>
     </nav>
     <!-- chiusura navbar -->
@@ -37,20 +37,23 @@
       <main>
 
         <!-- apertura movie box -->
-        <div class="movie_box">
+        <div class="movie_box d-flex">
   
           <!-- apertura movie card -->
-          <div class="movie_card">
-  
+          <div class="movie_card flex_column d-flex" v-for="movie in searchArray">
+            <h2>{{movie.title}}</h2>
+            <h3>{{movie.original_title}}</h3>
+            <span>{{movie.original_language}}</span>
+            <span>{{movie.vote_average}}</span>
           </div>
-          <!-- chiusrua movie card -->
+          <!-- chiusura movie card -->
   
         </div>
         <!-- chiusura movie box -->
 
       </main>
       <!-- chiusura main -->
-      
+
     </div>
     <!-- chisura container -->
 

@@ -10,6 +10,10 @@
   display: flex;
 }
 
+.flex_column{
+  flex-direction: column;
+}
+
 /*---------------------*/
 
 body{
@@ -52,13 +56,15 @@ nav{
 
 .movie_box{
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .movie_card{
   width: 200px;
   height: 300px;
   background-color:#221F20;
-  margin: 10px
+  margin: 10px;
+  align-items: center;
 }
 
 
