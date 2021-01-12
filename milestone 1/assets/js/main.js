@@ -5,10 +5,6 @@ let app = new Vue ({
   data: {
     searchArray: [],
     moviePoster: "",
-    movieTitle: "",
-    originalTitle: "",
-    movieLanguage: "",
-    movieRating: null,
     movieInput: "",
   },
 
