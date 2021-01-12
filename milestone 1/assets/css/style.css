@@ -46,7 +46,6 @@ nav{
 
 .container{
   width: 80vw;
-  height: 700px;
   border: 1px solid white;
   margin: auto;
   margin-top: 10px;
@@ -60,7 +59,7 @@ nav{
 }
 
 .movie_card{
-  width: 200px;
+  width: calc(100% / 5 - 20px);
   height: 300px;
   background-color:#221F20;
   margin: 10px;
