@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boolflix - Milestone 3</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+  
+  <!-- apertura wrapper -->
+  <div class="wrapper">
+
+    <!-- apertura navbar -->
+    <nav class="d-flex">
+
+      <!-- navabar left -->
+      <div class="navbar_left">
+        <img src="assets/img/netflix_logo.png" alt="">
+      </div>
+
+      <!-- navbar right -->
+      <div class="navbar_right">
+        <input type="text" placeholder="Inserisci il titolo del film"  v-on:keyup.enter="searchMovies()" v-model="movieInput">
+      </div>
+    </nav>
+    <!-- chiusura navbar -->
+  
+  
+    <!-- apertura container -->
+    <div class="container d-flex">
+      
+      <!-- apertura main -->
+      <main>
+
+        <!-- apertura movie box -->
+        <div class="movie_box d-flex">
+  
+          <!-- apertura movie card -->
+          <div class="movie_card flex_column d-flex" v-for="movie in searchArray">
+            <img :src="`${movie.imageURL}`" alt="">
+            <h2>{{movie.title || movie.name}}</h2>
+            <h3>{{movie.original_title || movie.original_name}}</h3>
+            <span v-if="movie.original_language === 'en'">{{movie.original_language}}</span>
+            <img v-else :src="`${movie.flagUrl}`" id="flag">
+            <span>{{movie.vote_average}}</span>
+            <div class="vote_stars d-flex" >
+              <i class="fas fa-star" v-if="star === 'full'" v-for="star in movie.voteInStars"></i>
+              <i class="far fa-star" v-if="star === 'empty'" v-for="star in movie.voteInStars"></i>
+            </div>
+          </div>
+          <!-- chiusura movie card -->
+  
+        </div>
+        <!-- chiusura movie box -->
+
+      </main>
+      <!-- chiusura main -->
+
+    </div>
+    <!-- chisura container -->
+
+  </div>
+  <!-- chiusura wrapper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
