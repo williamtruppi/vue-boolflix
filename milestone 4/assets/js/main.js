@@ -75,7 +75,17 @@ let app = new Vue ({
       })
     }
   },
-
-
-
+  
 })
+
+$(function () {
+
+  $(window).scroll(function () {
+  if ($(window).scrollTop() >= 650) {
+    $("#navtest").css('background','#221F20');
+  } else {
+    $("#navtest").css('background','transparent');
+  }
+});
+
+});
