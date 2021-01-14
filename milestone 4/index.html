@@ -69,8 +69,11 @@
         <div class="movie_box d-flex">
   
           <!-- apertura movie card -->
-          <div class="movie_card flex_column d-flex" v-for="movie in searchArray">
-            <img :src="`${movie.imageURL}`" alt="">
+          <div class="movie_card flex_column d-flex" v-for="movie in searchArray" >
+            <img :src="`${movie.imageURL}`" alt="" v-if="movie.poster_path !== null">
+            <div class="no_poster_image d-flex" v-if="movie.poster_path === null">
+              <h2 id="main_title_movie"><strong>Titolo: </strong> {{movie.title || movie.name}}</h2>
+            </div>
             <div class="overlay">
               <p id="main_title_movie"><strong>Titolo: </strong> {{movie.title || movie.name}}</p>
               <p id="original_title_movie"><strong>Titolo originale:</strong>{{movie.original_title || movie.original_name}}</p>
@@ -85,6 +88,7 @@
               </div>
               <p>{{movie.overview}}</p>
             </div>
+
           </div>
           <!-- chiusura movie card -->
   

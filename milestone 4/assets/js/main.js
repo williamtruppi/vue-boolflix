@@ -40,7 +40,8 @@ let app = new Vue ({
     completePosterUrl () {
       this.searchArray.forEach(elem => {
         elem.imageURL = "";
-        return elem.imageURL = `https://image.tmdb.org/t/p/w342${elem.poster_path}`
+        if(elem.poster_path != null)
+          return elem.imageURL = `https://image.tmdb.org/t/p/w342${elem.poster_path}`
       })
     },
 
