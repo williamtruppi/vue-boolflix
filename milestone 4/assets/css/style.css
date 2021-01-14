@@ -109,7 +109,7 @@ nav{
 .movie_box{
   width: 100%;
   flex-wrap: wrap;
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .movie_card{
