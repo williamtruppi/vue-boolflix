@@ -24,16 +24,16 @@ body{
 /* navbar */
 
 nav{
+  width: 100vw;
   height: 70px;
+  padding: 0 38px;
   background-color: #221F20;
-}
-
-.netflix_navbar{
-  width: 90vw;
-  height: 100%;
+  background-size: 1200px, 70px;
+  position: fixed;
+  z-index: 1;
   justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: auto;
 }
 
 /* navbar left */
@@ -70,12 +70,19 @@ nav{
 .navbar_right{
   width: 50%;
   color: white;
-  font-size: 25px;
+  font-size: 23px;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar_right span{
+  font-size: 15px;
+  height: fit-content;
 }
 
 .navbar_right i{
-  padding: 0 10px;
+  padding: 0 15px;
+  height: fit-content;
 }
 
 .navbar_right input {
@@ -90,7 +97,6 @@ nav{
 .container{
   width: 95vw;
   margin: auto;
-  margin-top: 10px;
 }
 
 /* main */
@@ -98,6 +104,7 @@ nav{
 .movie_box{
   width: 100%;
   flex-wrap: wrap;
+  margin-top: 70px;
 }
 
 .movie_card{
