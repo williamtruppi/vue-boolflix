@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* classi utility */
@@ -23,18 +24,60 @@ body{
 /* navbar */
 
 nav{
-  height: 80px;
+  height: 70px;
   background-color: #221F20;
-  justify-content: space-evenly;
+}
+
+.netflix_navbar{
+  width: 90vw;
+  height: 100%;
+  justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
 
 /* navbar left */
+
+.navbar_left{
+  width: 50%;
+  height: 100%;
+  align-items: center;
+}
+
 .navbar_left img{
   width: 120px;
 }
 
+.nav_movie_genre{
+  height: 100%;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.nav_movie_genre li{
+  list-style: none;
+  margin: 0 5px;
+}
+
+.nav_movie_genre a{
+  text-decoration: none;
+  color: white;
+}
+
+
 /* navbar right */
+
+.navbar_right{
+  width: 50%;
+  color: white;
+  font-size: 25px;
+  justify-content: flex-end;
+}
+
+.navbar_right i{
+  padding: 0 10px;
+}
+
 .navbar_right input {
   height: 35px;
   width: 180px;
@@ -45,8 +88,7 @@ nav{
 /* --------------------------- */
 
 .container{
-  width: 80vw;
-  border: 1px solid white;
+  width: 95vw;
   margin: auto;
   margin-top: 10px;
 }
@@ -59,8 +101,8 @@ nav{
 }
 
 .movie_card{
-  width: 200px;
-  height: 340px;
+  width: 239px;
+  height: 350px;
   background-color:#221F20;
   margin: 10px;
   align-items: center;
@@ -73,8 +115,18 @@ nav{
 }
 
 .overlay{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   display: none;
   position: absolute;
+  background-color: black;
+  color: white;
+  overflow-y: auto;
+}
+
+.overlay > .vote_stars{
+  color: yellow;
 }
 
 .movie_card:hover .overlay{
