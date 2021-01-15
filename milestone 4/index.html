@@ -82,8 +82,7 @@
               <div class="vote_stars d-flex" >
                 <span>
                   <strong>Voto: </strong>
-                  <i class="fas fa-star" v-if="star === 'full'" v-for="star in movie.voteInStars"></i>
-                  <i class="far fa-star" v-if="star === 'empty'" v-for="star in movie.voteInStars"></i>
+                  <i class="fas fa-star" v-if="star === 'full'" v-for="star in movie.voteInStars"></i><i class="far fa-star" v-if="star === 'empty'" v-for="star in movie.voteInStars"></i>
                 </span>
               </div>
               <p>{{movie.overview}}</p>
