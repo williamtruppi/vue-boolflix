@@ -30,9 +30,18 @@ let app = new Vue ({
             return elem.flagUrl = `https://www.countryflags.io/${elem.original_language}/flat/64.png`;
           })
           
+          /* ciclo che verifica se un oggetto è un film o serie tv ed applica, poi, la relativa funzione */
+          this.searchArray.forEach(elem => {
+            if (elem.hasOwnProperty("original_name")) {
+              this.getTVCast(elem.id, elem);
+            } else if(elem.hasOwnProperty("original_title")){
+              this.getMovieCast(elem.id, elem);
+            }
+          })
+       
+
           this.voteToStars();
           this.completePosterUrl();
-          this.getMovieCast();
           console.log(this.searchArray);
 
       });
@@ -43,6 +52,46 @@ let app = new Vue ({
         elem.imageURL = "";
           return elem.imageURL = `https://image.tmdb.org/t/p/w342${elem.poster_path}`
       })
+    },
+    
+    getMovieCast (elem_id, elem) {
+          let movieCastArray = [];
+          axios.get(`https://api.themoviedb.org/3/movie/${elem_id}/credits?api_key=3030b6d5014e4fc8b4997cc050050d0a`)
+          .then(response => {   
+            let tempCast = response.data.cast;  
+            if(tempCast && tempCast.length > 0){
+              for(let i = 0; i < 5; i++){
+                movieCastArray.push(tempCast[i].name);
+              }
+            } else {
+              movieCastArray.push("no cast");
+            }
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+          Vue.set(elem, "cast", movieCastArray);
+          /* avengers endgame */
+    },
+
+    getTVCast (elem_id, elem) {
+          let tvCastArray = [];
+          axios.get(`https://api.themoviedb.org/3/tv/${elem_id}/credits?api_key=3030b6d5014e4fc8b4997cc050050d0a`)
+          .then(response => {   
+            let tempCast = response.data.cast;  
+            if(tempCast && tempCast.length > 0){
+              for(let i = 0; i < 5; i++){
+                tvCastArray.push(tempCast[i].name);
+              }
+            } else {
+              tvCastArray.push("no cast");
+            }
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+          Vue.set(elem, "cast", tvCastArray);
+          /* avengers endgame */
     },
 
     /* funzione che ottiene la chiamata all'API movies */
@@ -76,14 +125,6 @@ let app = new Vue ({
       })
     },
 
-    getMovieCast () {
-      this.searchArray.forEach(elem => {
-        axios.get("`https://api.themoviedb.org/3/movie/${elem.id}/credits?api_key=3030b6d5014e4fc8b4997cc050050d0a&language=en-US`")
-        .then (result => {
-          console.log(result);
-        })
-      })
-    }
 
   },
 
