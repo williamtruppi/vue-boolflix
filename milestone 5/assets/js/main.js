@@ -7,6 +7,7 @@ let app = new Vue ({
     moviePoster: "",
     movieInput: "",
     moveRating: null,
+    movieGenres: [],
   },
 
   methods: {
@@ -36,10 +37,10 @@ let app = new Vue ({
               this.getTVCast(elem.id, elem);
             } else if(elem.hasOwnProperty("original_title")){
               this.getMovieCast(elem.id, elem);
+              this.getMovieGenres(elem.genre_ids);
             }
           })
        
-
           this.voteToStars();
           this.completePosterUrl();
           console.log(this.searchArray);
@@ -92,6 +93,23 @@ let app = new Vue ({
           });
           Vue.set(elem, "cast", tvCastArray);
           /* avengers endgame */
+    },
+
+    getMovieGenres (elem_genre_ids) {
+      axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=3030b6d5014e4fc8b4997cc050050d0a&language=it-IT`)
+        .then(response => {  
+        let genresName = [];
+        let tempGenres = response.data.genres;
+        console.log(tempGenres);
+        console.log(elem_genre_ids);
+        tempGenres.forEach(item => {
+          if (elem_genre_ids.includes(item.id)){
+            genresName.push(item.name);
+            console.log(genresName);
+          }
+        })
+        Vue.set(elem_genre_ids, "name", genresName);
+      })
     },
 
     /* funzione che ottiene la chiamata all'API movies */

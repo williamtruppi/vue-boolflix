@@ -85,8 +85,15 @@
                   <i class="fas fa-star" v-if="star === 'full'" v-for="star in movie.voteInStars"></i><i class="far fa-star" v-if="star === 'empty'" v-for="star in movie.voteInStars"></i>
                 </span>
               </div>
+              <div class="cast">
                 <strong>Cast: </strong>
                 <span v-for="actor in movie.cast">{{actor}} </span>
+              </div>
+              <div class="generi">
+                <strong>Generi: </strong>
+                <span v-for="genre in movie.genre_ids.name" v-if="movie.genre_ids.name">{{genre}} </span>
+                <span v-else>nessun genere indicato/disponibile</span>
+              </div>
               <p v-if="movie.overview"><strong>Trama: </strong>{{movie.overview}}</p>
             </div>
 
