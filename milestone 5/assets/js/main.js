@@ -8,6 +8,7 @@ let app = new Vue ({
     movieInput: "",
     moveRating: null,
     movieGenres: [],
+    tvGenres: [],
   },
 
   methods: {
@@ -35,6 +36,7 @@ let app = new Vue ({
           this.searchArray.forEach(elem => {
             if (elem.hasOwnProperty("original_name")) {
               this.getTVCast(elem.id, elem);
+              this.getTvGenres(elem.genre_ids);
             } else if(elem.hasOwnProperty("original_title")){
               this.getMovieCast(elem.id, elem);
               this.getMovieGenres(elem.genre_ids);
@@ -100,12 +102,29 @@ let app = new Vue ({
         .then(response => {  
         let genresName = [];
         let tempGenres = response.data.genres;
-        console.log(tempGenres);
-        console.log(elem_genre_ids);
+   /*      console.log(tempGenres);
+        console.log(elem_genre_ids); */
         tempGenres.forEach(item => {
           if (elem_genre_ids.includes(item.id)){
             genresName.push(item.name);
-            console.log(genresName);
+            /* console.log(genresName); */
+          }
+        })
+        Vue.set(elem_genre_ids, "name", genresName);
+      })
+    },
+
+    getTvGenres (elem_genre_ids) {
+      axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=3030b6d5014e4fc8b4997cc050050d0a&language=it-IT`)
+        .then(response => {  
+        let genresName = [];
+        let tempGenres = response.data.genres;
+        /* console.log(tempGenres);
+        console.log(elem_genre_ids); */
+        tempGenres.forEach(item => {
+          if (elem_genre_ids.includes(item.id)){
+            genresName.push(item.name);
+            /* console.log(genresName); */
           }
         })
         Vue.set(elem_genre_ids, "name", genresName);
