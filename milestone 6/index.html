@@ -30,8 +30,18 @@
           <!-- apertura nav_movie_genre -->
             <ul class="nav_movie_genre d-flex">
               <li><a href="">Home</a></li>
-              <li><a href="">Serie TV</a></li>
-              <li><a href="">Film</a></li>
+              <li class="tv_genre">
+                <a href="">Serie TV</a>
+                <ul class="tv_genres_list">
+                  <li v-for="genre in tvGenres"><a href="">{{genre.name}}</a></li>
+                </ul>
+              </li>
+              <li class="movie_genre">
+                <a href="">Film</a>
+                <ul class="movie_genres_list">
+                  <li v-for="genre in movieGenres"><a href="">{{genre.name}}</a></li>
+                </ul>
+              </li>
               <li><a href="">Nuovi e popolari</a></li>
               <li><a href="">La mia lista</a></li>
             </ul>

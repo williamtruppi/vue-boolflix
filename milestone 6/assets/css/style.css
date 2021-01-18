@@ -92,6 +92,32 @@ nav{
 
 /* --------------------------- */
 
+.movie_genre, .tv_genre{
+  position: relative;
+}
+
+.movie_genre, .tv_genre{
+  position: relative;
+}
+
+.movie_genre:hover .movie_genres_list, .tv_genre:hover .tv_genres_list{
+  display: block;
+}
+
+.tv_genres_list, .movie_genres_list {
+  padding-top: 70px;
+  display: none;
+  position: absolute;
+  transform: translateY(-14%);
+}
+
+.tv_genres_list li, .movie_genres_list li{
+  margin-bottom: 5px;
+}
+
+
+/* --------------------------- */
+
 .jumbroton{
   height: 650px;
   background-image: url(../img/banner.jpg);

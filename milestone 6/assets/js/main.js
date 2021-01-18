@@ -165,9 +165,19 @@ let app = new Vue ({
 
   },
 
-   mounted () {
-    
-    }
+  mounted () {
+    axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=3030b6d5014e4fc8b4997cc050050d0a&language=it-IT`)
+      .then(response => { 
+        this.movieGenres = response.data.genres;
+        console.log(this.movieGenres);
+    })
+
+    axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=3030b6d5014e4fc8b4997cc050050d0a&language=it-IT`)
+      .then(response => { 
+        this.tvGenres = response.data.genres;
+        console.log(this.tvGenres);
+    })
+  }
   
 })
 
